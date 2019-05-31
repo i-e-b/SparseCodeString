@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using NUnit.Framework;
 // ReSharper disable PossibleNullReferenceException
@@ -69,6 +70,9 @@ namespace SparseCodingString.Tests
             Console.WriteLine($"Sparse string size = {subject.ByteSize()}, of which {subject.StringCoeffs.Length} are co-efficients");
             Console.WriteLine($"Source string contains {subject.CharDictionary.Length} unique characters.");
 
+            Console.WriteLine("Dictionary: "+string.Join("",subject.CharDictionary.Select(b=>(char)b)));
+            Console.WriteLine("Coefficients:\r\n"+string.Join("", subject.StringCoeffs.Select(b=>b.ToString("X2"))));
+
             var result = subject.ToString();
 
             Assert.That(result, Is.EqualTo(complexString));
@@ -106,6 +110,9 @@ namespace SparseCodingString.Tests
             Console.WriteLine($"Sparse string size = {subject.ByteSize()}, of which {subject.StringCoeffs.Length} are co-efficients");
             Console.WriteLine($"Source string contains {subject.CharDictionary.Length} unique characters.");
 
+            Console.WriteLine("Dictionary: "+string.Join("",subject.CharDictionary.Select(b=>(char)b)));
+            Console.WriteLine("Coefficients:\r\n"+string.Join("", subject.StringCoeffs.Select(b=>b.ToString("X2"))));
+
             var result = subject.ToString();
 
             Assert.That(result, Is.EqualTo(complexString));
@@ -135,6 +142,9 @@ namespace SparseCodingString.Tests
             Console.WriteLine($"Sparse string size = {subject.ByteSize()}, of which {subject.StringCoeffs.Length} are co-efficients");
             Console.WriteLine($"Source string contains {subject.CharDictionary.Length} unique characters.");
 
+            Console.WriteLine("Dictionary: "+string.Join("",subject.CharDictionary.Select(b=>(char)b)));
+            Console.WriteLine("Coefficients:\r\n"+string.Join("", subject.StringCoeffs.Select(b=>b.ToString("X2"))));
+
             var result = subject.ToString();
 
             Assert.That(result, Is.EqualTo(complexString));
@@ -151,6 +161,7 @@ namespace SparseCodingString.Tests
             Console.WriteLine($"Source characters = {charCount} -> {byteCount} UTF8 bytes; Plain UTF32 would be {charCount * sizeof(UInt32)}");
             Console.WriteLine($"Sparse string size = {subject.ByteSize()}, of which {subject.StringCoeffs.Length} are co-efficients");
             Console.WriteLine($"Source string contains {subject.CharDictionary.Length} unique characters.");
+            Console.WriteLine("Dictionary: "+string.Join("",subject.CharDictionary.Select(b=>(char)b)));
 
             var result = subject.ToString();
 

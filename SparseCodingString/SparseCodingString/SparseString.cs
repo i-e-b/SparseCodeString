@@ -74,6 +74,22 @@ namespace SparseCodingString
         {
             return new SparseString(str);
         }
+        
+        public char CharAt(int i)
+        {
+            if (i < 0 || i >= StringLength) return (char)0;
+
+            var rounds = (int)Math.Ceiling(Math.Log(CharDictionary.Length, 2));
+            var dictIdx = 0;
+
+            for (int b = 0; b < rounds; b++)
+            {
+                dictIdx <<= 1;
+                if (GetBit(StringCoeffs, b* StringLength + i)) dictIdx |= 1;
+            }
+
+            return (char)CharDictionary[dictIdx];
+        }
 
         public override string ToString()
         {
